@@ -1,0 +1,79 @@
+﻿@page
+@model RotADemonStatsPage.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<div class="row">
+    <div class="col-md-10">
+        <asp:GridView id="grdPivot" runat="server" AutoGenerateColumns="True">
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MySql %>" ProviderName="<%$ ConnectionStrings:MySql.ProviderName %>" SelectCommand="SELECT * FROM resources"></asp:SqlDataSource>
+        <h2>Demon Stats</h2>
+        <h4>
+            Loading stats from Demon Stats Database in sql server:
+        </h4>        
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>DemonStats</th>
+            <th>Max HP</th>
+            <th>Grab Range</th>
+            <th>Preferred Attack Range</th>
+            <th>Move Speed</th>
+            <th>Acceleration</th>
+            <th>Deceleration</th>
+            <th>Aggro Radius</th>
+            <th>Patrol Range</th>
+            <th>Patrol Rate Min</th>
+            <th>Patrol Rate Max</th>
+            <th>Hunger Reduced Per Meat</th>
+            <th>Base Fearsomeness</th>
+            <th>Fearsomeness When Attacking</th>
+            <th>Standing Height</th>
+            <th>Sleeping Height</th>
+            <th>Can Use Weapons?</th>
+            <th>Loves To Chase?</th>
+            <th>Starting Happiness</th>
+            <th>Fallback Threshhold</th>
+            <th>Basic Attack Damage</th>
+            <th>Building Attack Damage</th>
+            <th>AOE Damage</th>
+            <th>Elemental Affinity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var demon in Model.demonStats)
+        {
+        <tr>
+            <td>@demon.demonName</td>
+            <td>@demon.maxHp</td>
+            <td>@demon.grabRange</td>
+            <td>@demon.preferredAttackRange</td>
+            <td>@demon.moveSpeed</td>
+            <td>@demon.acceleration</td>
+            <td>@demon.deceleration</td>
+            <td>@demon.aggroRadius</td>
+            <td>@demon.patrolRange</td>
+            <td>@demon.patrolRateMin</td>
+            <td>@demon.patrolRateMax</td>
+            <td>@demon.hungerReducedPerMeat</td>
+            <td>@demon.baseFearsomeness</td>
+            <td>@demon.fearsomenessWhenAttacking</td>
+            <td>@demon.standingHeight</td>
+            <td>@demon.sleepingHeight</td>
+            <td>@demon.canUseWeapons</td>
+            <td>@demon.lovesToChase</td>
+            <td>@demon.startingHappiness</td>
+            <td>@demon.fallbackThreshhold</td>
+            <td>@demon.basicAttackDamage</td>
+            <td>@demon.buildingAttackDamage</td>
+            <td>@demon.aoeDamage</td>
+            <td>@demon.elementalAffinity</td>
+        </tr>
+        }
+    </tbody>
+</table>
